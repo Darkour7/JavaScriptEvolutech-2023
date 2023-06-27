@@ -1,5 +1,5 @@
 body {
-    background-color:#A71D31;
+    background-color:#F5F889;
 
 }
 
@@ -7,7 +7,7 @@ button{
     font-size: 20px;
     font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
-    background-color:azure; 
+    background-color:#f0ffff; 
     border-radius: 100px;
 }
 
@@ -39,6 +39,7 @@ div{
 
 #text-field{
     font-family: 'Courier New', Courier, monospace;
-    color:azure;
+    color:#000000;
     text-align: center;
+    font-weight: bolder;
 }
