@@ -1,5 +1,4 @@
 function obtenerResultado() {
-    prompt('hola');
     let ancho = Number(document.getElementById('ancho').value);
     let altura = Number(document.getElementById('altura').value);
     let longitud = Number(document.getElementById('longitud').value);

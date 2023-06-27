@@ -1,0 +1,39 @@
+body{
+    box-sizing: content-box;
+    background-color: whitesmoke;
+    
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.contact-initial {
+    display: flex;
+    margin-left: 20%;
+    margin-right: 20%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-initial button{
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    max-height: 30px;
+}
+
+#contacts-area {
+    display: grid;
+    margin-left:30%;
+    margin-right:30%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap:5px;
+}
+
+#contacts-area span {
+    font-size:20px;
+    font-weight: bold;
+}
+label{
+    font-size: 20px;
+    font-weight: bolder;
+    color: blueviolet;
+}
