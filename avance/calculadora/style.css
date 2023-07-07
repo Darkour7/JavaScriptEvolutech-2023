@@ -1,13 +1,29 @@
 body{
     background-color: #CED0CE;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .calculator{
-    background-color: #F15025;
+    position: relative;
+    background-color: #171D1C;
     width: 500px;
     height: 550px;
     border-radius: 10%;
-    margin:auto;
+    box-shadow: 4px 4px #F15025;
+}
+
+.brand{
+    position: absolute;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    right: 60px;
+    top: 20px;
+    text-decoration: underline white;
+    de
 }
 
 #screen-field{
@@ -22,6 +38,7 @@ body{
     border-radius: 20%;
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
+    background-color: #E0DDCF;
 }
 
 .keyboard{
@@ -34,10 +51,20 @@ body{
 }
 
 .key{
+    user-select: none;
     margin:5px;
     border-radius: 20%;
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
+}
+
+.simbol{
+    background-color: #666A86;
+    color: white;
+}
+
+.special{
+    background-color: #F15025;
 }
 
 
