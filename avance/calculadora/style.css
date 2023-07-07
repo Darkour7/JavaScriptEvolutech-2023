@@ -19,7 +19,7 @@ body{
 
 #screen{
     width: 75%;
-    
+    border-radius: 20%;
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
 }

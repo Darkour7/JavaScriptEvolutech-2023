@@ -1,13 +1,22 @@
 /*
-    Casos de error de sintaxis
+    Casos de error de sintaxis:
         -En números
             -> Mas de un punto decimal en el mismo numero
         -En signos
             -> "23-*12"
             -> "3+/2"
             -> "3("
+    Casos sin implementar:
+        -(4)(2)
+        -1+.2
+        -raices
+        -Flechas de direccion
+    Cosas por optimizar:
+        -La evaluacion de signos especiales ---(evaluate())
+        -Es posible que no se necesite el regex
+
 */
-function evaluateOperation(input) {
+function calculate(input) {
     try{
         const checkRegex = /^[\d+*\-/().^]+$/
         const validado = checkRegex.test(input)
@@ -18,7 +27,7 @@ function evaluateOperation(input) {
     }
 }
 
-//input es la entrada, result el arreglo final y polarity es el simbolo final del resultado de evaluar los operandos
+//input es la entrada y polarity es el simbolo final del resultado de evaluar los operandos
 function toOperatorArray(input, polarity) {
     console.log('polaridad inicial: ', polarity);
     if(isSpecialSymbol(input.charAt(0)) || isSpecialSymbol(input.charAt(input.length-1))) { throw new Error('Syntax error') }
@@ -239,7 +248,7 @@ function typeToScreen(character){
     }
 
     if(character === '='){
-        let resultado = evaluateOperation(screen.value)
+        let resultado = calculate(screen.value)
         screen.value = resultado
         return
     }
