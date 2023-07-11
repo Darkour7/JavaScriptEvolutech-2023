@@ -1,0 +1,134 @@
+body {
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(41deg, #2E294E 21%, #541388 52%, #D90368 94%);
+    position: relative;
+}
+
+.field {
+    background-image: url('./assets/map.jpg');
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 80%;
+    height: 40%;
+    display: flex;
+    border: 2px solid #F1E9DA;
+    margin-bottom:200px;
+}
+
+.spot {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    border: 4px solid #AFFC41;
+}
+
+.chest {
+    position: absolute;
+    background-image: url('./assets/chest.png');
+    background-position: center;
+    background-size: cover;
+    height: 30px;
+    width: 30px;
+    visibility: hidden;
+}
+
+
+
+.button {
+    position: absolute;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    bottom: 35%;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #FAEBEB;
+}
+
+.button:hover {
+    color: #fff;
+    background-color: #00272B;
+    transition-duration: 150ms;
+    transition-timing-function: ease-in;
+}
+
+.captions {
+    position: absolute;
+    width: 80%;
+    bottom: 10%;
+    border: 2px solid white;
+    padding: 0.5em 0.5em 0.5em
+}
+
+
+.message {
+    position: absolute;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    top: 6%;
+    font-size: 17px;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .message {
+        position: absolute;
+        font-family: 'Courier New', Courier, monospace;
+        color: white;
+        top: 6%;
+        font-size: 30px;
+        text-align: center;
+    }
+    .button {
+        position: absolute;
+        border-radius: 10px;
+        font-family: 'Courier New', Courier, monospace;
+        color: black;
+        bottom: 13%;
+        font-size: 30px;
+        cursor: pointer;
+        background-color: #FAEBEB;
+    }
+    .captions {
+        position: absolute;
+        width: 20%;
+        bottom: 7%;
+        left: 10%;
+        border: 2px solid white;
+        padding: 0.5em 0.5em 0.5em
+    }
+    .field {
+        background-image: url('./assets/map.jpg');
+        position: relative;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 80%;
+        height: 60%;
+        display: flex;
+        border: 2px solid #F1E9DA;
+        margin-bottom:100px;
+    }
+}
+
+.single-caption {
+    display: flex;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.single-caption hr {
+    height: 10px;
+    border: none;
+    width: 100px;
+    margin-right: 0;
+}

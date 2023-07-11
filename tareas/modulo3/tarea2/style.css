@@ -1,0 +1,30 @@
+.form{
+    display: grid;
+    font-size: 20px;
+    background-color: whitesmoke;
+    place-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    margin:30px;
+    padding: 10px;
+}
+h1{
+    font-size: 20px;
+    text-align: center;
+}
+
+input{
+    width: fit-content;
+}
+
+.field{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    width: 30%;
+}
+
+#submit{
+    font-size: 20px;
+    margin:5px;
+    font-family: 'Courier New', Courier, monospace;
+}
