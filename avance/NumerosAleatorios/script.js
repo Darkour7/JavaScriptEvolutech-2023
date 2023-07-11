@@ -1,10 +1,10 @@
 const responseField = document.getElementById('text-field')
 const body = document.getElementById('body')
 const colors = {
-    init: '#F5F889',
+    init:   '#F5F889',
     inGame: '#006992',
-    won: '#25D07D',
-    lost: '#FF999C'
+    won:    '#25D07D',
+    lost:   '#FF999C'
 }
 
 function initGame(){

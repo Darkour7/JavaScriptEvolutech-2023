@@ -7,7 +7,6 @@ const screen = document.querySelector('#screen')
  * @param {string} character 
  * @returns 
  */
-
 function typeToScreen(character){
     if(character === 'DEL') {
         var actual = screen.value
@@ -172,7 +171,6 @@ function buildNumber(input, index) {
 
     return { number: result, index: index }
 }
-
 
 /**
  * Esta funcion auxiliar se ejecuta en la iteración principal (toOperatorArray())
@@ -340,10 +338,9 @@ const operate = (num1, num2, operator) => {
     Casos sin implementar:
         -(4)(2)
         -1+.2
-        -raices
+        -raices (como operador)
         -Flechas de direccion
     Cosas por optimizar:
-        -La evaluacion de signos especiales ---(evaluate())
+        -La evaluacion de signos especiales -> (evaluate())
         -Es posible que no se necesite el regex
-
 */
