@@ -169,3 +169,7 @@ function checkCollision(rect1, rect2){
       ) return true
     return false
 }
+
+let a = [1,2,3]
+let r = a.forEach(num=>{return num})
+console.log(r);

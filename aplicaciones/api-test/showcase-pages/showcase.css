@@ -1,0 +1,170 @@
+:root {
+    --black: #020202;
+    --yellow: #F9DC5C;
+    --white: #F7EBE8;
+    --green: #95E06C;
+}
+
+body {
+    margin: 0;
+    margin-bottom: 40px;;
+    background-color: var(--black);
+    overflow-x: hidden;
+}
+
+header {
+    width: 100vw;
+}
+
+.navbar {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--black);
+    font-family: 'Roboto Mono', monospace;
+    border-bottom: 1px solid var(--white);
+}
+
+.nav-heading {
+    padding-left: 10%;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+}
+
+.nav-heading a{
+    border-radius: 15px;
+    
+    padding: 10px;
+    text-decoration: none;
+    color: var(--white);
+}
+.nav-heading a:hover{
+    border-right: 2px solid var(--green);
+    border-bottom: 2px solid var(--green);
+}
+
+.nav-content {
+    font-size: 1rem;
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding-right: 10%;
+}
+
+.nav-item {
+    color: var(--white);
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0;
+    border-radius: 100px;
+}
+
+.nav-item.active {
+    background-color: var(--yellow);
+    color: var(--black);
+}
+.nav-item:hover {
+    background-color: var(--yellow);
+    color: var(--black);
+    transition-duration: 100ms;
+}
+
+@media (min-width: 800px) {
+    .nav-heading {
+        font-size: 1.6rem;
+    }
+    .nav-content {
+        font-size: 1.3rem;
+    }
+    .container{
+        grid-template-columns: 1fr 1fr 1fr ;
+    }
+}
+
+@media (max-width: 400px) {
+    .container{
+        grid-template-columns: 1fr;
+    }
+}
+@media (min-width: 500px) {
+    .container{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1200px) {
+    .nav-heading a{
+        font-size: 2rem;
+    }
+    .nav-content a{
+        font-size: 1.5rem;
+    }
+    .container{
+        grid-template-columns: 1fr 1fr 1fr 1fr ;
+    }
+}
+
+.container{
+    font-family: 'Roboto Mono', monospace;
+    display: grid;
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.card{
+    border: 1px solid var(--white);
+    border-radius: 25px;
+    overflow: hidden;
+    margin: 0px 20px 60px 20px;
+    background-color: var(--black);
+}
+.card:hover{
+    border: 2px solid var(--white);
+    transform: scale(1.1);
+    transition-duration: 150ms;
+}
+.card img{
+    display: flex;
+    width: 100%;
+}
+
+.content{
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+}
+
+.card:hover .content{
+    background-color: var(--green);
+    transition-duration: 150ms;
+}
+
+.characteristics{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.characteristics  span{
+    color: var(--yellow);   
+    font-weight: bold;
+}
+.characteristics p{
+    color: var(--white);   
+    margin:0;
+    text-align: right;
+}
+
+.card:hover .content .characteristics span{
+    color: var(--black);
+    transition-duration: 150ms;
+}
+
+.card:hover .content .characteristics p{
+    color: var(--black);
+    transition-duration: 150ms;
+}

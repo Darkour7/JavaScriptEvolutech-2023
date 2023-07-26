@@ -1,0 +1,103 @@
+:root {
+    --black: #020202;
+    --yellow: #F9DC5C;
+    --white: #F7EBE8;
+    --green: #95E06C;
+}
+
+body{
+    background-color: var(--black);
+    overflow-y: hidden;
+}
+
+.main{
+    display: flex;
+    height: 100vh;
+    width: auto;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.title{
+    font-size: 2.5rem;
+    color: var(--white);
+    font-family: 'Roboto Mono', monospace;
+}
+
+.title span{
+    color: var(--green);
+    text-decoration: underline;
+}
+
+.options{
+    display: grid;
+    font-family: 'Roboto Mono', monospace;
+    gap: 50px;
+    text-align: center;
+    width: 35%;
+}
+
+.option{
+    position: relative;
+    text-decoration: none;
+    color: var(--black);
+    padding: 10px;
+    background-color: var(--yellow);
+    border-radius: 25px;
+    font-size: 1.5rem;
+    overflow: hidden;
+}
+.option:hover{
+    transform: scale(1.1);
+    transition-duration: 200ms;
+    border: 2px solid var(--white);
+}
+
+.option:hover::before{
+    animation: fill 2s ease-in-out forwards;
+    display: block;
+}
+
+.option::before{
+    content:"";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background-color: var(--green);
+    right:1%;
+    transform: translateY(-40%);
+    border-radius: 40% ;
+    z-index: -1;
+    display: none;
+}
+
+
+
+@keyframes fill {
+    from{
+        right: 100%;
+        transform: translateY(-50%) rotate(0deg);
+    }
+    to{
+        right: 1%;
+        transform: translateY(-50%) rotate(380deg);
+    }
+}
+
+@keyframes move {
+    from {transform: translateX(100px)}
+    to {transform: translateX(0px)}
+}
+
+.option:nth-child(1){
+    animation-name: move;
+    animation-duration: 1s;
+}
+.option:nth-child(2){
+    animation-name: move;
+    animation-duration: 2s;
+}
+.option:nth-child(3){
+    animation-name: move;
+    animation-duration: 3s;
+}
