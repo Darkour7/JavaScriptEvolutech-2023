@@ -163,7 +163,6 @@ function changePage(forward){
 
     const buildFunction = getBuildingFunction()
     requestDataPage(`${currentPage}`).then((data)=>{
-        console.log(data)
         buildFunction(data.results)
     })
     changePageLabel()
@@ -219,6 +218,13 @@ function changeArrows(){
             forwardListener = false
         }
     }
+}
+
+/**
+ * Funcion para hacer scroll hasta arriba
+ */
+function scrollFunction(){
+    window.scrollTo(0,0)
 }
 
 /**
