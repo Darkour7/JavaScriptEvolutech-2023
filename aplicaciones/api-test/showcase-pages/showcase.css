@@ -35,14 +35,18 @@ header {
 
 .nav-heading a{
     border-radius: 15px;
-    
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
     padding: 10px;
     text-decoration: none;
     color: var(--white);
 }
 .nav-heading a:hover{
-    border-right: 2px solid var(--green);
-    border-bottom: 2px solid var(--green);
+    border-right: 2px solid var(--yellow);
+    border-bottom: 2px solid var(--yellow);
+    transform: scale(1.1);
+    transition-duration: 200ms;
+
 }
 
 .nav-content {
@@ -70,7 +74,7 @@ header {
 .nav-item:hover {
     background-color: var(--yellow);
     color: var(--black);
-    transition-duration: 100ms;
+    transition-duration: 300ms;
 }
 
 @media (min-width: 800px) {
@@ -92,7 +96,7 @@ header {
 }
 @media (min-width: 500px) {
     .container{
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
@@ -139,7 +143,7 @@ header {
     padding: 10px;
 }
 
-.card:hover .content{
+.card:hover {
     background-color: var(--green);
     transition-duration: 150ms;
 }
@@ -167,4 +171,44 @@ header {
 .card:hover .content .characteristics p{
     color: var(--black);
     transition-duration: 150ms;
+}
+
+.pagination{
+    display: flex;
+    color: var(--yellow);
+    font-family: 'Roboto Mono', monospace;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 70%;
+    margin: auto;
+    padding-top: 2%;
+    font-size: 1.5rem;
+}
+
+.back,
+.forward{
+    opacity: 10%;
+    cursor: default;
+}
+
+.back-active,
+.forward-active{
+    opacity:100%;
+    cursor: pointer;
+}
+
+
+.heads-up-arrow{
+    position: fixed;
+    z-index: 10;
+    right: 5%;
+    bottom:5%;
+    
+}
+
+#up:hover, 
+.forward-active:hover , 
+.back-active:hover {
+    transform: scale(1.1);
+    transition-duration: 200ms; 
 }

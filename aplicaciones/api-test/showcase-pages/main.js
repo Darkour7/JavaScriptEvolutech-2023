@@ -1,12 +1,32 @@
+/**
+ * Handler del contenedor para los resultados
+ */
 const container = document.querySelector('.container')
+
+/**
+ * Handlers para el paginador
+ */
+const backArrow = document.querySelector('#back')
+let backListener = false
+const pageHtml = document.querySelector('#page')
+const forwardArrow = document.querySelector('#forward')
+let forwardListener = false
+
+/**
+ * Configuración guiada por parametros de la URL
+ */
 const URLquery = window.location.search
 //console.log(URLquery)
 const params = new URLSearchParams(URLquery)
 //console.log(params.keys().next())
 const id = + params.get('id')
 let BASE_URL = formatBaseURL(id)
-console.log(BASE_URL)
 
+/**
+ * Variables del paginador
+ */
+let currentPage = 1
+let totalPages = 0
 
 /**
  * Esta funcion formatea la url a la que se realizarán las peticiones, en este caso mediante el id 
@@ -21,8 +41,6 @@ function formatBaseURL(id){
     return url
 }
 
-
-
 /**
  * Esta función  realiza la petición de los datos a la API 
  * @param { string } page  
@@ -34,6 +52,12 @@ async function requestDataPage (page){
     return data
 }
 
+/**
+ * Esta funcion se encarga de construir la vista de cada una de las tarjetas
+ * por elemento obtenido mediante las peticiones a la api, en este caso 
+ * tarjetas con personajes
+ * @param {object} results 
+ */
 function buildCharacterContent(results){
     results.map((character)=>{
         const card = document.createElement('div')
@@ -54,6 +78,12 @@ function buildCharacterContent(results){
     })
 }
 
+/**
+ * Esta funcion se encarga de construir la vista de cada una de las tarjetas
+ * por elemento obtenido mediante las peticiones a la api, en este caso 
+ * tarjetas con locaciones
+ * @param {object} results 
+ */
 function buildLocationContent(results){
     results.map((location)=>{
         const card = document.createElement('div')
@@ -68,6 +98,12 @@ function buildLocationContent(results){
     })
 }
 
+/**
+ * Esta funcion se encarga de construir la vista de cada una de las tarjetas
+ * por elemento obtenido mediante las peticiones a la api, en este caso 
+ * tarjetas con episodios
+ * @param {object} results 
+ */
 function buildEpisodeContent(results){
     results.map((episode)=>{
         const card = document.createElement('div')
@@ -85,6 +121,7 @@ function buildEpisodeContent(results){
 
 /**
  * Esta función construye un elemento html de la clase content
+ * es basicamente un contenedor para cada atributo de cada elemento
  * @param {string} title 
  * @param {string} data 
  * @returns {object} - El cual es el elemento HTML que podremos insertar en nuestro documento
@@ -101,27 +138,86 @@ function buildCardContent(title, data){
     return content
 }
 
-// requestDataPage('').then((data)=>{
-//     console.log(data);
-//     buildCharacterContent(data.results)
-// })
-
-// requestDataPage('').then((data)=>{
-//     console.log(data);
-//     buildLocationContent(data.results)
-// })
-
-// requestDataPage('').then((data)=>{
-//     console.log(data);
-//     buildEpisodeContent(data.results)
-// })
-
+/**
+ * Esta función otorga el valor de páginas totales tras el setup
+ * de la página
+ * @param {Number} pages 
+ */
 function buildPagination(pages){
-    // while (container.firstChild) {
-    //     container.removeChild(container.firstChild);
-    // }
-    for(let i = 1; i<=pages; i++){
+    totalPages = pages
+}
 
+/**
+ * Esta función es la que se ejecuta al hacer click sobre alguna de las flechas
+ * el parametro forward es true si es la flecha de la derecha y falso si es la otra
+ * @param {Boolean} forward 
+ * @returns 
+ */
+function changePage(forward){
+    currentPage --
+    if(forward) currentPage += 2
+    if (currentPage > totalPages || currentPage < 1) return
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+
+    const buildFunction = getBuildingFunction()
+    requestDataPage(`${currentPage}`).then((data)=>{
+        console.log(data)
+        buildFunction(data.results)
+    })
+    changePageLabel()
+    changeArrows()
+}
+
+/**
+ * Esta función se encarga de cambiar el contenido del texto del paginador
+ */
+function changePageLabel(){
+    pageHtml.innerHTML = `Página ${currentPage}`
+}
+
+/**
+ * Esta función se encarga de otorgar o quitar la funcionalidad a las flechas
+ * dependiendo de la página actual en la que se encuentre el usuario
+ * además de cambiar el aspecto de las mismas
+ */
+function changeArrows(){
+    if(currentPage == 1){
+        backArrow.classList.replace('back-active','back')
+        if (backListener){
+            backArrow.removeEventListener('click',()=>{
+                changePage(false)
+            })
+            backListener = false
+        }
+    }
+    if (currentPage > 1){
+        backArrow.classList.replace('back', 'back-active')
+        if (!backListener){
+            backArrow.addEventListener('click',()=>{
+                changePage(false)
+            })
+            backListener = true
+        }
+    }
+    if(currentPage < totalPages){
+        forwardArrow.classList.replace('forward', 'forward-active')
+        if (!forwardListener){
+            forwardArrow.addEventListener('click',()=>{
+                changePage(true)
+            })
+            forwardListener = true
+        }
+    }
+    if(currentPage === totalPages){
+        forwardArrow.classList.replace('forward-active','forward')
+        if (forwardListener){
+            forwardArrow.removeEventListener('click',()=>{
+                changePage(true)
+            })
+            forwardListener = false
+        }
     }
 }
 
@@ -132,20 +228,33 @@ function buildPagination(pages){
  */
 function setup(buildFunction){
     requestDataPage('').then((data)=>{
-        console.log(data)
-        buildPagination()
+        buildPagination(data.info.pages)
+        changeArrows()
         buildFunction(data.results)
     })
 }
 
-function init(){
+/**
+ * Esta función devuelve la función de construcción correspondiente al parametro id
+ * que tiene nuestra página al cargar
+ * @returns {function}
+ */
+function getBuildingFunction(){
     switch (id){
         case 1:
+            return buildCharacterContent
+        case 2:
+            return buildLocationContent
+        case 3:
+            return buildEpisodeContent
     }
 }
 
-// fetch('./test.json').then(response => response.json())
-//                     .then(data=>{
-//                         console.log(data)
-//                         buildCharacterContent(data.results)
-//                     })
+/**
+ * Función inicial
+ */
+function init(){
+    setup(getBuildingFunction())
+}
+
+init()
