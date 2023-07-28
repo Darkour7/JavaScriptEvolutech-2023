@@ -129,12 +129,7 @@ function buildEpisodeContent(results){
 function buildCardContent(title, data){
     const content = document.createElement('div')
     content.className = 'characteristics'
-    const titleElement = document.createElement('span')
-    const dataElement = document.createElement('p')
-    titleElement.innerHTML = title
-    dataElement.innerHTML = data
-    content.appendChild(titleElement)
-    content.appendChild(dataElement)
+    content.innerHTML  = `<span> ${title} </span> <p> ${data} </p>`
     return content
 }
 
